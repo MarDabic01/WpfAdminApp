@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfAdminApp.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAdminApp.View"
+        mc:Ignorable="d"
+        xmlns:viewModel="clr-namespace:WpfAdminApp.ViewModel;assembly=WpfAdminApp.ViewModel"
+        Title="MainWindow" Height="400" Width="600" ResizeMode="NoResize">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="User Info" Grid.RowSpan="2" Margin="6">
+            <StackPanel>
+                <Label Content="User name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="{Binding CurrentPerson.UserName, ValidatesOnNotifyDataErrors=False}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" FontWeight="Bold"/>
+                <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="{Binding CurrentPerson.Password, ValidatesOnNotifyDataErrors=False}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" FontWeight="Bold"/>
+                <Label Content="Is administrator" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="{Binding CurrentPerson.IsAdministrator}" FontWeight="Bold">
+                </Label>
+            </StackPanel>
+        </GroupBox>
+        <ListBox ItemTemplate="{StaticResource userTemplate}" ItemsSource="{Binding PersonList}" SelectedItem="{Binding CurrentPerson, ValidatesOnNotifyDataErrors=False}" Grid.Column="1" Grid.Row="1" Margin="6">
+        </ListBox>
+        <StackPanel HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="6">
+            <Button Name="newBtn" Content="New"  Width="72" Height="20" Margin="0,0,5,0" Click="newBtn_Click"/>
+            <Button Name="editBtn" Content="Edit"  Width="72" Height="20" Margin="0,0,5,0" Click="editBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

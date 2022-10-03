@@ -1,0 +1,29 @@
+﻿<Application x:Class="WpfAdminApp.View.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfAdminApp.View"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <DataTemplate x:Key="userTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Path=UserName}" />
+            </StackPanel>
+        </DataTemplate>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <AdornedElementPlaceholder Name="adornerPlaceholder"/>
+                            <TextBlock Foreground="Red"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Margin="5,0,0,0"
+                                >*</TextBlock>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>
